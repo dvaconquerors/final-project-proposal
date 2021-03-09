@@ -48,8 +48,8 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-\copyrightyear{2019}
-\acmYear{2019}
+\copyrightyear{2021}
+\acmYear{2021}
 \setcopyright{rightsretained}
 
 %% These commands are for a PROCEEDINGS abstract or paper.
@@ -85,8 +85,8 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Real Estate Pricing from an Economic and Ecologic Standpoint}
 
+\title{Real Estate Price: Economic and Ecologic Perspectives}
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
@@ -131,15 +131,20 @@
   \institution{Georgia Institute of Technology}
   }
 
+% Short list on each page
+\renewcommand{\shortauthors}{CS-6242 Team 054}
+
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
 Based on county level data for all states of the United States of America, this article analyzed the relationship between the American real estate market and datasets covering economic as well as ecologic aspects.
 Other than existing analysis on this topic, this approach considers the prediction of prices not solely based on economic factors, but also takes environmental aspects into account.
+
+% gist: homeownership is an important savings vehicle for building wealth and preparing for retirement in the US. it's becoming increasingly unobtainable for most households, and it's driven by factors such as internal features of the home as well as external municipal, socioeconomic, and ecological factors. households can currently get point-in-time home price estimates from services such as zillow, but much real estate industry historical data is walled off by trade groups. we're hoping to address the uncertainty involved in residential real estate purchasing by modeling home (listing?) prices using current residential listing data on Zillow and data capturing externalities (such as communitiy socioeconomic and ecological factors) to provide transparent home price estimates for buyers and sellers. additionally, while we don't have historical home sales data, we will have historical socioeconomic and ecological data. so once we get a sense of the association between these factors and home prices (over time?), we can forecast short-term future trends for these factors to identify how home prices may change in the short-term.
 \end{abstract}
 
-\keywords{Real Estate, Regression, Time Series, ARIMA}
+\keywords{Real Estate, Regression, Time Series Analysis}
 
 %%TC:endignore
 
@@ -159,20 +164,43 @@ Other than existing analysis on this topic, this approach considers the predicti
 
 \section{Hi Team, start here}
 [ Q's removed and inserted below ]
-Hi Guys. This is just a copied version of the template we (should?) use - it is linked in the project requirement doc (Prof. Polo's).
-guenter\newline
+Hi Guys. This is just a copied version of the template we (should?) use - it is linked in the project requirement doc (Prof. Polo's).\newline
+i'm also putting questions/things that i'm not sure about in three parentheses
 
 \section{Introduction}
 
 [References to literature: brackets with three letters - until literature is fixed and can be referenced through numbers]
 
-[1. What are you trying to do? Articulate your objectives using absolutely no jargon.]
-This analysis aims at predicting prices for the US real estate market through the application of multiple linear regression on the one hand, and time series analysis for factor prediction on the other hand. The underlying factors do cover a range of different data sets: Historic and current real estate prices obtained from Zillow.com (and/or related APIs), Salary data as well as education quality are another source of data that is added to build a more comprehensive regression model. In order to add another data dimension to the model, air quality measures are used to contribute the ecologic component of our prediction model. For this purpose we particularly focus on the overall air quality measure (AQ) or the AQ index (AQI) and the amount of emitted particular matter (PM).\newline
+Although the subprime mortgage crisis illuminated some risks of homeownership as roughly eight million homes were foreclosed, homeownership remains the preeminent savings vehicle for low- and moderate-income households to prepare for retirement by establishing substantial savings, with an internal rate of return outpacing the stock market in a "typical" market. Unfortunately, households face increasing difficulty in achieving homeownership due to incomes that have not kept pace with appreciating home prices, difficulties in obtaining mortgages, lack of housing inventory, and uncertainty in the homebuying process \cite{Goodman2018}.
 
-[2. How is it done today; what are the limits of current practice?]
-The US real estate market is a very competitive environment, hence also attracting researchers to analyze its behavior. Regression and tree models mainly use variables closely tied to the properties' attributes, e.g. the number of rooms, age of the house [kim,ceh,man]. Other areas of research focus on environmental aspects. While there is research on the impact of surrounding production activity  on related real estate [nes], there are also more generic approaches looking at the impact of haze or the amount of ozone [ans] on the real estate market. The pricing impact of particular matter (as a measure of air quality) was conducted earlier in the 2000s, investigating the described relationship for US metro areas [bay]. Recent approaches do investigate different angles of this complex topic of real estate evaluation, however do not particularly focus on providing insight and means to interactively identify areas that provide both, reasonable pricing and a sustainable environment to live in.
+\section{Proposal}
 
-[3. What's new in your approach? Why will it be successful?]
+\textbf{[1. What are you trying to do? Articulate your objectives using absolutely no jargon.]}
+This project endeavors to address the difficulty of uncertainty by predicting current prices for the US residential real estate market and forecasting how those prices might change in the short term. This will be accomplished by blending (((historic? and ))) current market listings to capture internal features of a home as well as external features consisting of socioeconomic and ecological features of the community a home is situated in. For this purpose we particularly focus on the overall air quality measure (AQ) or AQ index (AQI) and the amount of emitted particulate matter (PM). By understanding the influence of these factors on housing prices and forecasting how they may change in a particular community in the near future, we can give individuals insight into how current home prices may change in the near term.
+%This will be accomplished through the application of multiple linear regression on the one hand, and time series analysis for factor prediction on the other hand. The underlying factors do cover a range of different data sets: Historic and current real estate prices obtained from Zillow.com (and/or related APIs), Salary data as well as education quality are another source of data that is added to build a more comprehensive regression model. In order to add another data dimension to the model, air quality measures are used to contribute the ecologic component of our prediction model. For this purpose we particularly focus on the overall air quality measure (AQ) or the AQ index (AQI) and the amount of emitted particular matter (PM).\newline
+
+\textbf{[2. How is it done today; what are the limits of current practice?]}
+The US real estate market is a very competitive environment, hence attracting researchers to analyze its behavior both from academic, policy-driven perspectives as well as commercial perspectives. 
+
+Existing academic approaches to residential real estate pricing primarily perform regression- and tree-based models with variables closely tied to the properties' attributes (e.g. the number of rooms or age of the house) \cite{Kim2003} \cite{Ceh2018} \cite{Manjuna2017}[kim,ceh,man] Other areas of research focus on environmental aspects. Existing literature notes that ecological degradation carries a quantifiable cost that is often overlooked (because it is not sold as a good or traded on the market) but nonetheless harms household and national wealth.
+
+China's case is instructive, as it has experienced over the past few decades both a robust housing boom as well as increasing levels of particulate pollution (due to an economic boom driven by heavy industry) that have garnered extensive academic attention to the effects of environmental factors on real estate prices \cite{Chen2017} \cite{Chen2019} \cite{Wang2021} \cite{Zheng2014} \cite{Sun2020} \cite{Dai2020} \cite{Mei2020}. These studies caution us to control for endogeneity issues (due to missing variables and/or reverse causality as home prices naturally increase in areas characterized by high economical productivity driven by ecologically harmful heavy industry) that cause ordinary least squares (OLS) estimation to bias pollution term to zero \cite{Zheng2014} \cite{Chen2017} \cite{Chen2019}. However, the Chinese experience does not translate perfectly to the US experience. In particular, all of these Chinese studies ignore individual home features because the majority (more than 70\%) of real estate market activity in China is newly built commodity housing \cite{Chen2017}. Additionally, no reliable second-hand transaction data exists for the Chinese real estate market \cite{Zheng2014}.
+
+Around the world, literature exists using multiple regression to explain the relationship between purchase price and "ecosystem disservice" in Italy \cite{Nestico2020}. In Colombia, research leverages both stages of Rosen's hedonic pricing framework (first-stage Hedonic Price Function estimation and Second Stage estimation of demand for a specific feature obtained by combining first-stage hedonic price estimations with socioeconomic data reflective of household preferences) \cite{Rosen1974} in a log-linear regression model showing the positive effect of good AQ on home prices \cite{Carriazo2018}.
+
+Unfortunately, literature is much more sparse on the effects of AQ on the US real estate market. Existing research has examined the impact of haze and the amount of ozone on the real estate market \cite{Anselin2006} and the marginal price impact of AQ in light of the difficulties imposed by household mobility constraints \cite{Bayer2009}.
+
+From the commercial perspective, households can use tools like Zillow to obtain current home price estimates; these estimates, however, operate as black-box algorithms that spit out a point-in-time price without context or consideration for short-term changes. Additionally, lack of access to historical real estate transaction data (which is held and controlled by individual MLIS trade groups around the country) presents a challenge to households (((right?))).
+
+%While there is research on the impact of surrounding production activity on related real estate \cite{Nesticò2020}[nes], there are also more generic approaches looking at the impact of haze or the amount of ozone \cite{Anselin2006}[ans] on the real estate market. The pricing impact of particular matter (as a measure of air quality) was conducted earlier in the 2000s, investigating the described relationship for US metro areas [bay]. Recent approaches do investigate different angles of this complex topic of real estate evaluation, however do not particularly focus on providing insight and means to interactively identify areas that provide both, reasonable pricing and a sustainable environment to live in.
+
+\textbf{[3. What's new in your approach? Why will it be successful?]}
+Providing a transparent residential real estate pricing model \textendash as well as insight into potential short-term changes \textendash makes this project novel. 
+
+This project will overcome the challenge presented by a lack of access to historical real estate transaction data by creating an enriched composite dataset of several data sources. Specifically, socioeconomic and ecological data will be obtained from official sources (e.g. US government agencies and open data portals), and prices and internal features of homes currently listed will be scraped from Zillow.
+
+Home prices will be modeled using a hedonic regression framework \cite{Rosen1974} \cite{Ceh2018} \cite{Bin2004}. Additionally, the project may encounter the need to explore multilevel and/or evolutionary approaches to fitting a model that services multiple regions \cite{Morano2019}.
+
 This approach does not only combines a variety of datasets, but uses different algorithms to make predictions and further identify relatively undervalued real estate. Underlying data is not only obtained from official sources (e.g. governmental, census), but obtained through accessing and scraping web resources. This allows more detailed, even county level, analysis. To enhance the success of this idea, the dataset which is based on real estate, education and demographic data will further be extended through an environmental aspect, air quality measures. In order to obtain most recent and future values for AQ, time series models are used to predict the average air quality factor.
 AQ will be measured through the AQI as well as the amount of particular matter, expressed similar to the below illustration.
 
@@ -186,10 +214,14 @@ The outcome of this projects aims at providing users with both, a true and fair 
 
 
 [6. What are the risks and payoffs?]
+Risks may be the fact that environmental aspects do not have a significant impact on the pricing of real estate, however, the project aims at providing this additional view point to support a potential buying decision.
 [7. How much will it cost?]
-[8. How long will it take?]
+This is a class project, therefore the time invested in the project can be seen as the project cost.
+[8. How long will it take? (Need to include milestones/plan of action)]
+The project period ends ....
+There are three major milestones that have to be reached in order to succeed with the project. (1) As not all data is available as simple dataset, we need to scrape and collect data from different sources. (2) Prediction of real estate prices as well as the analysis in integration of other data will mark the second major milestone. (3) Eventually the findings need to be displayed in an appropriate manner. As we deal with a lot of geographic coordinates, a map is likely to be suitable.
 
-[9. What are the midterm and final "exams" to check for success? How will progress be measured?]
+[9. What are the midterm and final "exams" to check for success? How will progress be measured?]\pagebreak
 
 
 \section{Template Overview}
@@ -636,7 +668,8 @@ the margin:
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-base}
+\bibliography{references}
+
 
 %%
 %% If your work has an appendix, this is the place to put it.
