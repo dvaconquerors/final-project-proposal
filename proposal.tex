@@ -34,6 +34,10 @@
 %%%% To use the SIGCHI extended abstract template, please visit
 % https://www.overleaf.com/read/zzzfqvkmrfzn
 
+% [ packages ] --------------------------------------------
+% packages go here
+% [ /packages ] -------------------------------------------
+
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -95,41 +99,42 @@
 %% used to denote shared contribution to the research.
 
 %%TC:ignore
+
 \author{Seth Caldwell}
 \email{scaldwell36@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 \author{Muhammad Jarir Kanji}
 \email{mkanji3@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 \author{James Mabry}
 \email{jmabry9@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 \author{Jordan Nelson}
 \email{jnelson300@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 \author{Guenter Roehrich}
 \email{groehrich3@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 \author{Daemin Song}
 \email{dsong74@gatech.edu}
 \affiliation{%
   \institution{Georgia Institute of Technology}
-  }
+}
 
 % Short list on each page
 \renewcommand{\shortauthors}{CS-6242 Team 054}
@@ -137,14 +142,14 @@
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
-\begin{abstract}
-Based on county level data for all states of the United States of America, this article analyzed the relationship between the American real estate market and datasets covering economic as well as ecologic aspects.
-Other than existing analysis on this topic, this approach considers the prediction of prices not solely based on economic factors, but also takes environmental aspects into account.
+%\begin{abstract}
+%Based on county level data for all states of the United States of America, this article analyzed the relationship between the American real estate market and datasets covering economic as well as ecologic aspects.
+%Other than existing analysis on this topic, this approach considers the prediction of prices not solely based on economic factors, but also takes environmental aspects into account.
 
-% gist: homeownership is an important savings vehicle for building wealth and preparing for retirement in the US. it's becoming increasingly unobtainable for most households, and it's driven by factors such as internal features of the home as well as external municipal, socioeconomic, and ecological factors. households can currently get point-in-time home price estimates from services such as zillow, but much real estate industry historical data is walled off by trade groups. we're hoping to address the uncertainty involved in residential real estate purchasing by modeling home (listing?) prices using current residential listing data on Zillow and data capturing externalities (such as communitiy socioeconomic and ecological factors) to provide transparent home price estimates for buyers and sellers. additionally, while we don't have historical home sales data, we will have historical socioeconomic and ecological data. so once we get a sense of the association between these factors and home prices (over time?), we can forecast short-term future trends for these factors to identify how home prices may change in the short-term.
-\end{abstract}
+% gist: homeownership is an important savings vehicle for building wealth and preparing for retirement in the US. it's becoming increasingly unobtainable for most households, and it's driven by factors such as internal features of the home as well as external municipal, socioeconomic, and ecological factors. households can currently get point-in-time home price estimates from services such as zillow, but much real estate industry historical data is walled off by trade groups. we're hoping to address the uncertainty involved in residential real estate purchasing by modeling home (listing?) prices using current residential listing data on Zillow and data capturing externalities (such as community socioeconomic and ecological factors) to provide transparent home price estimates for buyers and sellers. additionally, while we don't have historical home sales data, we will have historical socioeconomic and ecological data. so once we get a sense of the association between these factors and home prices (over time?), we can forecast short-term future trends for these factors to identify how home prices may change in the short-term.
+%\end{abstract}
 
-\keywords{Real Estate, Regression, Time Series Analysis}
+%\keywords{Real Estate, Regression, Time Series Analysis, Air Pollution}
 
 %%TC:endignore
 
@@ -167,493 +172,106 @@ Other than existing analysis on this topic, this approach considers the predicti
 Hi Guys. This is just a copied version of the template we (should?) use - it is linked in the project requirement doc (Prof. Polo's).\newline
 i'm also putting questions/things that i'm not sure about in three parentheses
 
-\section{Introduction}
-
-[References to literature: brackets with three letters - until literature is fixed and can be referenced through numbers]
-
-Although the subprime mortgage crisis illuminated some risks of homeownership as roughly eight million homes were foreclosed, homeownership remains the preeminent savings vehicle for low- and moderate-income households to prepare for retirement by establishing substantial savings, with an internal rate of return outpacing the stock market in a "typical" market. Unfortunately, households face increasing difficulty in achieving homeownership due to incomes that have not kept pace with appreciating home prices, difficulties in obtaining mortgages, lack of housing inventory, and uncertainty in the homebuying process \cite{Goodman2018}.
+\section{Problem Definition}
+While the subprime mortgage crisis illuminated some risks, homeownership remains the preeminent savings vehicle for low- and moderate-income households to establish substantial savings, with an internal rate of return outpacing the stock market in a "typical" market \cite{Goodman2018}. Unfortunately, households face increasing difficulty in achieving homeownership due to incomes that have not kept pace with appreciating home prices, lack of housing inventory, and uncertainty in the homebuying process with commercial real estate price estimators operating as black boxes and the real estate industry controlling the data rather closely.
 
 \section{Proposal}
 
 \textbf{[1. What are you trying to do? Articulate your objectives using absolutely no jargon.]}
-This project endeavors to address the difficulty of uncertainty by predicting current prices for the US residential real estate market and forecasting how those prices might change in the short term. This will be accomplished by blending (((historic? and ))) current market listings to capture internal features of a home as well as external features consisting of socioeconomic and ecological features of the community a home is situated in. For this purpose we particularly focus on the overall air quality measure (AQ) or AQ index (AQI) and the amount of emitted particulate matter (PM). By understanding the influence of these factors on housing prices and forecasting how they may change in a particular community in the near future, we can give individuals insight into how current home prices may change in the near term.
-%This will be accomplished through the application of multiple linear regression on the one hand, and time series analysis for factor prediction on the other hand. The underlying factors do cover a range of different data sets: Historic and current real estate prices obtained from Zillow.com (and/or related APIs), Salary data as well as education quality are another source of data that is added to build a more comprehensive regression model. In order to add another data dimension to the model, air quality measures are used to contribute the ecologic component of our prediction model. For this purpose we particularly focus on the overall air quality measure (AQ) or the AQ index (AQI) and the amount of emitted particular matter (PM).\newline
+This project endeavors to address the difficulty of uncertainty by predicting current prices for the US residential real estate market (((and forecasting how those prices might change in the short term))). By blending real estate listings to capture internal features of a home with external features consisting of socioeconomic and ecological features of the community a home is situated in, the project will visualize the results to give users a transparent price model as well as how these factors vary by geographic region. For this purpose, we particularly focus on the overall air quality measure (AQ) or AQ index (AQI) and the amount of emitted particulate matter (PM). By understanding the influence of these factors and visualizing them geographically, the project will equip homebuyers with the ability to focus their search. Moreover, given historical data for these externalities, the project will provide homebuyers with historical context and possibly even short-term forecasts.
+%Too far in the modelling topic, should not be in this paper (guenter - I wrote this paragraph earlier myself ;) )This will be accomplished through the application of multiple linear regression on the one hand, and time series analysis for factor prediction on the other hand. The underlying factors do cover a range of different data sets: Historic and current real estate prices obtained from Zillow.com (and/or related APIs), Salary data as well as education quality are another source of data that is added to build a more comprehensive regression model. In order to add another data dimension to the model, air quality measures are used to contribute the ecologic component of our prediction model. For this purpose we particularly focus on the overall air quality measure (AQ) or the AQ index (AQI) and the amount of emitted particular matter (PM).\newline
 
 \textbf{[2. How is it done today; what are the limits of current practice?]}
-The US real estate market is a very competitive environment, hence attracting researchers to analyze its behavior both from academic, policy-driven perspectives as well as commercial perspectives. 
-
-Existing academic approaches to residential real estate pricing primarily perform regression- and tree-based models with variables closely tied to the properties' attributes (e.g. the number of rooms or age of the house) \cite{Kim2003} \cite{Ceh2018} \cite{Manjuna2017}[kim,ceh,man] Other areas of research focus on environmental aspects. Existing literature notes that ecological degradation carries a quantifiable cost that is often overlooked (because it is not sold as a good or traded on the market) but nonetheless harms household and national wealth.
-
-China's case is instructive, as it has experienced over the past few decades both a robust housing boom as well as increasing levels of particulate pollution (due to an economic boom driven by heavy industry) that have garnered extensive academic attention to the effects of environmental factors on real estate prices \cite{Chen2017} \cite{Chen2019} \cite{Wang2021} \cite{Zheng2014} \cite{Sun2020} \cite{Dai2020} \cite{Mei2020}. These studies caution us to control for endogeneity issues (due to missing variables and/or reverse causality as home prices naturally increase in areas characterized by high economical productivity driven by ecologically harmful heavy industry) that cause ordinary least squares (OLS) estimation to bias pollution term to zero \cite{Zheng2014} \cite{Chen2017} \cite{Chen2019}. However, the Chinese experience does not translate perfectly to the US experience. In particular, all of these Chinese studies ignore individual home features because the majority (more than 70\%) of real estate market activity in China is newly built commodity housing \cite{Chen2017}. Additionally, no reliable second-hand transaction data exists for the Chinese real estate market \cite{Zheng2014}.
-
-Around the world, literature exists using multiple regression to explain the relationship between purchase price and "ecosystem disservice" in Italy \cite{Nestico2020}. In Colombia, research leverages both stages of Rosen's hedonic pricing framework (first-stage Hedonic Price Function estimation and Second Stage estimation of demand for a specific feature obtained by combining first-stage hedonic price estimations with socioeconomic data reflective of household preferences) \cite{Rosen1974} in a log-linear regression model showing the positive effect of good AQ on home prices \cite{Carriazo2018}.
-
-Unfortunately, literature is much more sparse on the effects of AQ on the US real estate market. Existing research has examined the impact of haze and the amount of ozone on the real estate market \cite{Anselin2006} and the marginal price impact of AQ in light of the difficulties imposed by household mobility constraints \cite{Bayer2009}.
-
-From the commercial perspective, households can use tools like Zillow to obtain current home price estimates; these estimates, however, operate as black-box algorithms that spit out a point-in-time price without context or consideration for short-term changes. Additionally, lack of access to historical real estate transaction data (which is held and controlled by individual MLIS trade groups around the country) presents a challenge to households (((right?))).
-
+%The US real estate market is a very competitive environment, hence attracting researchers to analyze its behavior both from academic, policy-driven perspectives as well as commercial perspectives.%
 %While there is research on the impact of surrounding production activity on related real estate \cite{Nesticò2020}[nes], there are also more generic approaches looking at the impact of haze or the amount of ozone \cite{Anselin2006}[ans] on the real estate market. The pricing impact of particular matter (as a measure of air quality) was conducted earlier in the 2000s, investigating the described relationship for US metro areas [bay]. Recent approaches do investigate different angles of this complex topic of real estate evaluation, however do not particularly focus on providing insight and means to interactively identify areas that provide both, reasonable pricing and a sustainable environment to live in.
+Households can use commercial tools like Zillow to obtain current home price estimates. These estimates operate as black-box algorithms that spit out a point-in-time price without context or consideration for short-term changes.
+%Additionally, lack of access to historical real estate transaction data (which is held and controlled by individual MLIS trade groups around the country) presents a challenge to households (((right? -> but to us as well))).%
+
+Existing academic approaches to residential real estate pricing primarily perform regression- and tree-based models with variables closely tied to the properties' attributes (e.g. number of rooms or age of the house) \cite{Kim2003} \cite{Ceh2018} \cite{Manjuna2017}. Alternative approaches explore communities' education qualities on the real estate market, which yields significant results; however, they only consider a relatively isolated viewpoint \cite{Fleishman2017} \cite{Seo2009}.
+
+Other research focuses on ecological aspects. Existing literature notes that ecological degradation carries a quantifiable cost that is often overlooked (because it is not sold or traded) but nonetheless harms household and national wealth.
+
+China's case is instructive, as it has experienced over the past few decades both a robust housing boom as well as increasing levels of particulate pollution (due to an economic boom propelled by heavy industry). These dual phenomena have garnered extensive interest in the effects of environmental factors on real estate prices \cite{Zheng2014} \cite{Mei2020}. While underlying studies often refer to and analyze a wider term of air pollution, an alternative focus on fine particulate matter ($PM_{2.5 }$) in other cases is also observed \cite{Chen2017} \cite{Chen2019} \cite{Wang2021} \cite{Sun2020} \cite{Dai2020}. These studies caution us to control for endogeneity issues (due to missing variables and reverse causality as home prices naturally increase in areas characterized by high economical productivity associated with ecologically harmful heavy industry) that cause ordinary least squares (OLS) estimation to bias the ecological covariate to zero \cite{Zheng2014} \cite{Chen2017} \cite{Chen2019}.\newline However, the Chinese experience does not translate perfectly to the US experience. In particular, these studies ignore individual home features because newly built commodity housing accounts for the majority (more than 70\%) of real estate market activity in China \cite{Chen2017}. Additionally, no reliable second-hand transaction data exists for the Chinese real estate market \cite{Zheng2014}.
+
+Around the world, other studies have used multiple regression to explain the relationship between purchase price and "ecosystem disservice" in Italy. The authors further attempt to forecast home depreciation due to air pollution \cite{Nestico2020}. However, the sample size is comparatively small (consisting of just 60 residential sales over three years), and the authors neglect to use the log-linear functional form, which much literature recommends for hedonic price modeling to mitigate heteroscedasticity \cite{Morano2019} \cite{Fletcher2000} \cite{Cassel1985}. In Colombia, research leverages both stages of Rosen's hedonic pricing framework %(first-stage Hedonic Price Function estimation and Second Stage estimation of demand for a specific feature obtained by combining first-stage hedonic price estimations with socioeconomic data reflective of household preferences) %
+\cite{Rosen1974} in a log-linear regression model showing the positive effect of good AQ on home prices \cite{Carriazo2018}.
+
+Literature is sparse on the effects of AQ on the US real estate market and primarily uses AQ as a vehicle for illustrating methodological challenges in the hedonic pricing model. For instance, interpolating data collected at geographically fixed sampling stations to geographically distributed phenomena \cite{Anselin2006} and illustrating the effect of mobility constraint on marginal willingness to pay for community factors such as clean air \cite{Bayer2009}.
 
 \textbf{[3. What's new in your approach? Why will it be successful?]}
 Providing a transparent residential real estate pricing model \textendash as well as insight into potential short-term changes \textendash makes this project novel. 
 
 This project will overcome the challenge presented by a lack of access to historical real estate transaction data by creating an enriched composite dataset of several data sources. Specifically, socioeconomic and ecological data will be obtained from official sources (e.g. US government agencies and open data portals), and prices and internal features of homes currently listed will be scraped from Zillow.
 
-Home prices will be modeled using a hedonic regression framework \cite{Rosen1974} \cite{Ceh2018} \cite{Bin2004}. Additionally, the project may encounter the need to explore multilevel and/or evolutionary approaches to fitting a model that services multiple regions \cite{Morano2019}.
+We anticipate that the project will apply the flexible multiple regression framework to model home prices \cite{James2014} \cite{James2014:LinearRegression}. It may be beneficial to explore Bayesian regression to more clearly quantify the uncertainty of our estimates and/or if we come across reliable historical data \cite{Gelman2014:BayesianLinReg}. Because the real estate data can come from different regional groups (e.g., different metro areas, different states, etc.), it also may be beneficial to explore multilevel/hierarchical approaches \cite{Gelman2007:MultilevelLinReg} \cite{Gelman2014:HierarchicalModels} \cite{Gelman2014:HierarchicalLinearModels} and/or evolutionary approaches \cite{Morano2019} to fit a model that services multiple regional groups.
 
-This approach does not only combines a variety of datasets, but uses different algorithms to make predictions and further identify relatively undervalued real estate. Underlying data is not only obtained from official sources (e.g. governmental, census), but obtained through accessing and scraping web resources. This allows more detailed, even county level, analysis. To enhance the success of this idea, the dataset which is based on real estate, education and demographic data will further be extended through an environmental aspect, air quality measures. In order to obtain most recent and future values for AQ, time series models are used to predict the average air quality factor.
-AQ will be measured through the AQI as well as the amount of particular matter, expressed similar to the below illustration.
+And it certainly will be critical to heed the lessons from existing literature to adapt multiple regression to some of the idiosyncracies of real estate valuation \cite{Rosen1974} \cite{Ceh2018} \cite{Bin2004}. Specifically, literature on hedonic regression for real estate prescribes the log-linear functional form to mitigate heteroscedasticity that can be present in modeling real estate transactions \cite{Morano2019} \cite{Fletcher2000} \cite{Cassel1985}. Some literature modeling home prices and ecological factors finds that treating ecological variables as categorical rather than quantitative yields superior results \cite{Anselin2006}. If the data spans geographic regions, existing literature provides some guidance for exploring multilevel models \cite{Chen2017} or evolutionary algorithms \cite{Morano2019}. Much research modeling home values and environmental factors shares the shortcoming that internal features of homes are treated as fixed, more or less identical commodities \cite{Chen2017} \cite{Chen2019} \cite{Nestico2020} \cite{Bayer2009} \cite{Wang2021} \cite{Mei2020} \cite{Sun2020} \cite{Dai2020} \cite{Kim2003} \cite{Zheng2014}. Additionally, some literature finds that the normal error term assumed in most hedonic regression modeling of real estate prices may be inaccurate \cite{Francke2017}; in these cases, it may be worth exploring heavier-tailed variants (such as the t-distribution) for robustness against outliers \cite{Francke2017} \cite{Gelman2007:GLM}.
 
-\includegraphics[scale=0.4]{AQ_US_2018.jpg}
+This approach does not only combines a variety of datasets, but uses different algorithms to make predictions and further identify relatively undervalued real estate. Underlying data is not only obtained from official sources (e.g. governmental, census), but obtained by scraping web resources. This allows more detailed, even county-level, analysis. To enhance the success of this idea, the dataset which is based on real estate, education and demographic data will further be extended through an environmental aspect, air quality measures. In order to obtain most recent and future values for AQ, time series models are used to predict the average air quality factor.
+AQ will be measured through the AQI as well as the amount of particulate matter, expressed similar to the figure in the appendix.
 
-[4. Who cares?]
-This idea may be a key centerpiece in the decision making process, whether to buy real estate in a specific area (to a given price), or not. This approach not only provides the monetary view onto the real estate value, but also introduces the dimension of the environmental impact on its residents.
+\textbf{[4. Who cares?]}
+Households seeking to purchase a house will benefit from transparent price modeling along with the visualization of external factors.
+%This idea may be a key centerpiece in the decision making process, whether to buy real estate in a specific area (to a given price), or not. This approach not only provides the monetary view onto the real estate value, but also introduces the dimension of the environmental impact on its residents.
 
-[5. If you're successful, what difference and impact will it make, and how do you measure them (e.g., via user studies, experiments, ground truth data, etc.)?]
-The outcome of this projects aims at providing users with both, a true and fair view with regard to price and value of their potential real estate. This value is defined through the quantitative measures closely tied to the property, however also takes into account more abstract measures. Eventually, an undervalued real estate will benefit its potential buyers.
+\textbf{[5. If you're successful, what difference and impact will it make, and how do you measure them (e.g., via user studies, experiments, ground truth data, etc.)?]}
+This projects aims at providing users with both an accurate, transparent view with regard to the value of real estate. This value is defined through the quantitative measures closely tied to the property; however it also takes into account external features. Eventually, an undervalued real estate will benefit its potential buyers.
 
+\textbf{[6. What are the risks and payoffs?]}
+A potential risk is that environmental aspects do not explain significant variability in home prices; however, the project aims at providing this additional view point to support a potential buying decision.
 
-[6. What are the risks and payoffs?]
-Risks may be the fact that environmental aspects do not have a significant impact on the pricing of real estate, however, the project aims at providing this additional view point to support a potential buying decision.
-[7. How much will it cost?]
-This is a class project, therefore the time invested in the project can be seen as the project cost.
-[8. How long will it take? (Need to include milestones/plan of action)]
-The project period ends ....
-There are three major milestones that have to be reached in order to succeed with the project. (1) As not all data is available as simple dataset, we need to scrape and collect data from different sources. (2) Prediction of real estate prices as well as the analysis in integration of other data will mark the second major milestone. (3) Eventually the findings need to be displayed in an appropriate manner. As we deal with a lot of geographic coordinates, a map is likely to be suitable.
+\textbf{[7. How much will it cost?]}
+No monetary costs are anticipated; team time investment is the primary cost.
+%This is a class project, therefore the time invested in the project can be seen as the project cost.
 
-[9. What are the midterm and final "exams" to check for success? How will progress be measured?]\pagebreak
+\textbf{[8. How long will it take? (Need to include milestones/plan of action)]}
+The project is anticipated to take no more than two months. There are three major milestones: \textbf{(1)} As real estate listing data is unavailable as simple downloads or API portals, these data must be scraped, cleaned, and integrated with the external socioeconomic and AQ data (which can be downloaded); \textbf{(2)} analyzing the data to model home prices on home features and external factors; \textbf{(3)} deploying the model, consisting of a geographic visualization of the results and a web interface.
 
+\textbf{[9. What are the midterm and final "exams" to check for success? How will progress be measured?]}
+The three milestones above will serve as progress guideposts. The team meets weekly to review progress against these milestones, aided by a GitHub Project board.
 
-\section{Template Overview}
-As noted in the introduction, the ``\verb|acmart|'' document class can
-be used to prepare many different kinds of documentation --- a
-double-blind initial submission of a full-length technical paper, a
-two-page SIGGRAPH Emerging Technologies abstract, a ``camera-ready''
-journal article, a SIGCHI Extended Abstract, and more --- all by
-selecting the appropriate {\itshape template style} and {\itshape
-  template parameters}.
+\section{Plan of Activities}
+All team members have contributed comparably. We anticipate that this will continue to be the case.
+\begin{enumerate}
+  \item{\textbf{2021-02-28}: Brainstorm topics, divide into two groups to collect sample data and rough prototypes for two top topics (\textit{all})}
+  \item{\textbf{2021-03-12}: Proposal and presentation}
+  \begin{itemize}
+    \item{Research (\textit{all})}
+    \item{Proposal document (\textit{Guenter, Jordy, Muhammad})}
+    \item{Proposal video (\textit{Daemin})}
+  \end{itemize}
+  \item{\textbf{2021-03-19}: Data collection, cleaning, storage}
+  \begin{itemize}
+    \item{Real estate, salary, \& education data (\textit{James, Seth, Daemin})}
+    \item{Air quality data (\textit{Guenter, Jordy, Muhammad})}
+    \item{Data storage (\textit{James})}
+  \end{itemize}
+  \item{\textbf{2021-04-01}: Modeling (\textit{all})}
+  \begin{itemize}
+    \item{Exploratory analysis (\textit{all})}
+    \item{Model building and selection (\textit{all})}
+  \end{itemize}
+  \item{\textbf{2021-04-02}: Progress report (\textit{all})}
+  \item{\textbf{2021-04-15}: Deployment}
+  \begin{itemize}
+    \item{Visualization (\textit{all})}
+    \item{Web interface (\textit{all})}
+  \end{itemize}
+  \item{\textbf{2021-04-23}: Final poster and presentation (\textit{all})}
+\end{enumerate}
 
-This document will explain the major features of the document
-class. For further information, the {\itshape \LaTeX\ User's Guide} is
-available from
-\url{https://www.acm.org/publications/proceedings-template}.
+\pagebreak
 
-\subsection{Template Styles}
+\appendix
+\section{Appendix}
 
-The primary parameter given to the ``\verb|acmart|'' document class is
-the {\itshape template style} which corresponds to the kind of publication
-or SIG publishing the work. This parameter is enclosed in square
-brackets and is a part of the {\verb|documentclass|} command:
-\begin{verbatim}
-  \documentclass[STYLE]{acmart}
-\end{verbatim}
-
-Journals use one of three template styles. All but three ACM journals
-use the {\verb|acmsmall|} template style:
-\begin{itemize}
-\item {\verb|acmsmall|}: The default journal template style.
-\item {\verb|acmlarge|}: Used by JOCCH and TAP.
-\item {\verb|acmtog|}: Used by TOG.
-\end{itemize}
-
-The majority of conference proceedings documentation will use the {\verb|acmconf|} template style.
-\begin{itemize}
-\item {\verb|acmconf|}: The default proceedings template style.
-\item{\verb|sigchi|}: Used for SIGCHI conference articles.
-\item{\verb|sigchi-a|}: Used for SIGCHI ``Extended Abstract'' articles.
-\item{\verb|sigplan|}: Used for SIGPLAN conference articles.
-\end{itemize}
-
-\subsection{Template Parameters}
-
-In addition to specifying the {\itshape template style} to be used in
-formatting your work, there are a number of {\itshape template parameters}
-which modify some part of the applied template style. A complete list
-of these parameters can be found in the {\itshape \LaTeX\ User's Guide.}
-
-Frequently-used parameters, or combinations of parameters, include:
-\begin{itemize}
-\item {\verb|anonymous,review|}: Suitable for a ``double-blind''
-  conference submission. Anonymizes the work and includes line
-  numbers. Use with the \verb|\acmSubmissionID| command to print the
-  submission's unique ID on each page of the work.
-\item{\verb|authorversion|}: Produces a version of the work suitable
-  for posting by the author.
-\item{\verb|screen|}: Produces colored hyperlinks.
-\end{itemize}
-
-This document uses the following string as the first command in the
-source file:
-\begin{verbatim}
-\documentclass[sigconf,authordraft]{acmart}
-\end{verbatim}
-
-\section{Modifications}
-
-Modifying the template --- including but not limited to: adjusting
-margins, typeface sizes, line spacing, paragraph and list definitions,
-and the use of the \verb|\vspace| command to manually adjust the
-vertical spacing between elements of your work --- is not allowed.
-
-{\bfseries Your document will be returned to you for revision if
-  modifications are discovered.}
-
-\section{Typefaces}
-
-The ``\verb|acmart|'' document class requires the use of the
-``Libertine'' typeface family. Your \TeX\ installation should include
-this set of packages. Please do not substitute other typefaces. The
-``\verb|lmodern|'' and ``\verb|ltimes|'' packages should not be used,
-as they will override the built-in typeface families.
-
-\section{Title Information}
-
-The title of your work should use capital letters appropriately -
-\url{https://capitalizemytitle.com/} has useful rules for
-capitalization. Use the {\verb|title|} command to define the title of
-your work. If your work has a subtitle, define it with the
-{\verb|subtitle|} command.  Do not insert line breaks in your title.
-
-If your title is lengthy, you must define a short version to be used
-in the page headers, to prevent overlapping text. The \verb|title|
-command has a ``short title'' parameter:
-\begin{verbatim}
-  \title[short title]{full title}
-\end{verbatim}
-
-\section{Authors and Affiliations}
-
-Each author must be defined separately for accurate metadata
-identification. Multiple authors may share one affiliation. Authors'
-names should not be abbreviated; use full first names wherever
-possible. Include authors' e-mail addresses whenever possible.
-
-Grouping authors' names or e-mail addresses, or providing an ``e-mail
-alias,'' as shown below, is not acceptable:
-\begin{verbatim}
-  \author{Brooke Aster, David Mehldau}
-  \email{dave,judy,steve@university.edu}
-  \email{firstname.lastname@phillips.org}
-\end{verbatim}
-
-The \verb|authornote| and \verb|authornotemark| commands allow a note
-to apply to multiple authors --- for example, if the first two authors
-of an article contributed equally to the work.
-
-If your author list is lengthy, you must define a shortened version of
-the list of authors to be used in the page headers, to prevent
-overlapping text. The following command should be placed just after
-the last \verb|\author{}| definition:
-\begin{verbatim}
-  \renewcommand{\shortauthors}{McCartney, et al.}
-\end{verbatim}
-Omitting this command will force the use of a concatenated list of all
-of the authors' names, which may result in overlapping text in the
-page headers.
-
-The article template's documentation, available at
-\url{https://www.acm.org/publications/proceedings-template}, has a
-complete explanation of these commands and tips for their effective
-use.
-
-\section{Rights Information}
-
-Authors of any work published by ACM will need to complete a rights
-form. Depending on the kind of work, and the rights management choice
-made by the author, this may be copyright transfer, permission,
-license, or an OA (open access) agreement.
-
-Regardless of the rights management choice, the author will receive a
-copy of the completed rights form once it has been submitted. This
-form contains \LaTeX\ commands that must be copied into the source
-document. When the document source is compiled, these commands and
-their parameters add formatted text to several areas of the final
-document:
-\begin{itemize}
-\item the ``ACM Reference Format'' text on the first page.
-\item the ``rights management'' text on the first page.
-\item the conference information in the page header(s).
-\end{itemize}
-
-Rights information is unique to the work; if you are preparing several
-works for an event, make sure to use the correct set of commands with
-each of the works.
-
-\section{CCS Concepts and User-Defined Keywords}
-
-Two elements of the ``acmart'' document class provide powerful
-taxonomic tools for you to help readers find your work in an online
-search.
-
-The ACM Computing Classification System ---
-\url{https://www.acm.org/publications/class-2012} --- is a set of
-classifiers and concepts that describe the computing
-discipline. Authors can select entries from this classification
-system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
-commands to be included in the \LaTeX\ source.
-
-User-defined keywords are a comma-separated list of words and phrases
-of the authors' choosing, providing a more flexible way of describing
-the research being presented.
-
-CCS concepts and user-defined keywords are required for all short- and
-full-length articles, and optional for two-page abstracts.
-
-\section{Sectioning Commands}
-
-Your work should use standard \LaTeX\ sectioning commands:
-\verb|section|, \verb|subsection|, \verb|subsubsection|, and
-\verb|paragraph|. They should be numbered; do not remove the numbering
-from the commands.
-
-Simulating a sectioning command by setting the first word or words of
-a paragraph in boldface or italicized text is {\bfseries not allowed.}
-
-\section{Tables}
-
-The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
-package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
-high-quality tables.
-
-Table captions are placed {\itshape above} the table.
-
-Because tables cannot be split across pages, the best placement for
-them is typically the top of the page nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and the
-table caption.  The contents of the table itself must go in the
-\textbf{tabular} environment, to be aligned properly in rows and
-columns, with the desired horizontal and vertical rules.  Again,
-detailed instructions on \textbf{tabular} material are found in the
-\textit{\LaTeX\ User's Guide}.
-
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed output of
-this document.
-
-\begin{table}
-  \caption{Frequency of Special Characters}
-  \label{tab:freq}
-  \begin{tabular}{ccl}
-    \toprule
-    Non-English or Math&Frequency&Comments\\
-    \midrule
-    \O & 1 in 1,000& For Swedish names\\
-    $\pi$ & 1 in 5& Common in math\\
-    \$ & 4 in 5 & Used in business\\
-    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-  \bottomrule
-\end{tabular}
-\end{table}
-
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more
-desirable. Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
-
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
-    \toprule
-    Command &A Number & Comments\\
-    \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-\section{Math Equations}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of the three are
-discussed in the next sections.
-
-\subsection{Inline (In-text) Equations}
-A formula that appears in the running text is called an inline or
-in-text formula.  It is produced by the \textbf{math} environment,
-which can be invoked with the usual
-\texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
-the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
-and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
-examples of in-text equations in context. Notice how this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
-
-\subsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
-
-Again, in either environment, you can use any of the symbols and
-structures available in \LaTeX\@; this section will just give a couple
-of examples of display equations in context.  First, consider the
-equation, shown as an inline equation above:
-\begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
-
-\section{Figures}
-
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{sample-franklin}
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{The 1907 Franklin Model D roadster.}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.4]{AQ_US_2018.jpg}
+    \caption{PM2.5 AQI Values}
 \end{figure}
 
-Your figures should contain a caption which describes the figure to
-the reader. Figure captions go below the figure. Your figures should
-{\bfseries also} include a description suitable for screen readers, to
-assist the visually-challenged to better understand your work.
-
-Figure captions are placed {\itshape below} the figure.
-
-\subsection{The ``Teaser Figure''}
-
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
-    \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
-
-\section{Citations and Bibliographies}
-
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
-
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
-
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
-
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, an article in a proceedings (of a conference,
-  symposium, workshop for example) (paginated proceedings article)
-  \cite{Andler79}, a proceedings article with all possible elements
-  \cite{Smith10}, an example of an enumerated proceedings article
-  \cite{VanGundy07}, an informally published work \cite{Harel78}, a
-  doctoral dissertation \cite{Clarkson85}, a master's thesis:
-  \cite{anisi03}, an online document / world wide web resource
-  \cite{Thornburg01, Ablamowicz07, Poker06}, a video game (Case 1)
-  \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05} and
-  (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication \cite{rous08}, 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  couple of citations with DOIs:
-  \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-
-\section{Acknowledgments}
-
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
-
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
-
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
-
-\section{Appendices}
-
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
-
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
-
-\section{SIGCHI Extended Abstracts}
-
-The ``\verb|sigchi-a|'' template style (available only in \LaTeX\ and
-not in Word) produces a landscape-orientation formatted article, with
-a wide left margin. Three environments are available for use with the
-``\verb|sigchi-a|'' template style, and produce formatted output in
-the margin:
-\begin{itemize}
-\item {\verb|sidebar|}:  Place formatted text in the margin.
-\item {\verb|marginfigure|}: Place a figure in the margin.
-\item {\verb|margintable|}: Place a table in the margin.
-\end{itemize}
+\pagebreak
 
 % %%
 % %% The acknowledgments section is defined using the "acks" environment
